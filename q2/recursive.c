@@ -1,6 +1,9 @@
 /* FIXME: Implement! */
 
-int main()
+char smallest_character(char *str, char c )
 {
-    return 0;
+    if(*str <= c) {
+        return smallest_character(++str,c);
+    } else
+        return str[0];
 }
