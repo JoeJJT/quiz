@@ -5,12 +5,12 @@ int main()
 {
     char Input[] = {'c','f','j','p','v'};
     char Output;
-    int i;
+    int i,index=0;
     char searchNumber;
     printf("Search Number:");
     scanf("%c",&searchNumber);
 #if defined(REC)
-    Output = smallest_character(Input,searchNumber);
+    Output = smallest_character(Input,searchNumber,index);
 #endif
 #if defined(ITER)
     Output = smallest_character(Input,searchNumber);
