@@ -1,4 +1,3 @@
-
 char smallest_character(char str[],char c )
 {
     int size = sizeof(str)/sizeof(str[0]);
@@ -10,5 +9,3 @@ char smallest_character(char str[],char c )
     }
     return str[0];
 }
-
-
