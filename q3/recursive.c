@@ -1,56 +1,35 @@
 /* FIXME: Implement! */
 
+#include "BinaryTree.h"
 #include <stdio.h>
-#include <stdlib.h>
+#include <stddef.h>
 
-struct TreeNode {
-	int data;
-	struct TreeNode *right;
-	struct TreeNode *left;
-};
-
-struct TreeNode *preorder(TreeNode *root);
-void flatten(struct TreeNode *root);
-
-int main()
-{
-    return 0;
-}
-
-void flatten(struct TreeNode *root) {
-	TreeNode *tmp = (TreeNode *)malloc(sizeof(TreeNode));
-	if(tmp == NULL) {
-		TreeNode *head;
-		tmp = preorder(root);
-		head = tmp;
-	}
-	else{
-		tmp->next = preorder(root); 
-	}
-}
-
-TreeNode *preorder(TreeNode *root) {
+TreeNode *flatten(TreeNode *root) {
 	if(root == NULL) {
 		return NULL;
 	}
-	else {
-		TreeNode *rightTree = root->right;
-		TreeNode *leftTree = root->left;
-
-		if(leftTree != NULL) {
-			TreeNode *tail = leftTree->left;
-			tail->right = root;
-			leftTree->left = root;
-			TreeNode *list = rightTree;
-			while(list->right != NULL) {
-				list = list->right;
-			}
-			list->right = ;
-			perorder(leftTree->right);
+	if(root->rightNode) {
+		root->rightNode = flatten(root->rightNode);
+	}
+	if(root->leftNode) {
+		TreeNode *tmp = root->rightNode;
+		root->rightNode = flatten(root->leftNode);
+		TreeNode *t = root->rightNode;
+		while(t->rightNode) {
+			t = t->rightNode;
 		}
-		if(rightTree != NULL) {
-			rightTree = preorder(rightTree);
-		}
+		t->rightNode = tmp;
+		root->leftNode = NULL;
 	}
 	return root;
+}
+
+void rec_flatten(TreeNode *root) {
+	TreeNode *list = flatten(root);
+	printf("Recursive:");
+	while(list->rightNode) {
+		printf("%d -> ",list->data);
+		list = list->rightNode;
+	}
+	printf("NULL\n");
 }

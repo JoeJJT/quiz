@@ -1,6 +1,11 @@
 /* FIXME: Implement! */
+#include "BinaryTree.h"
+#include <stdio.h>
 
-int main()
-{
-    return 0;
+struct TreeNode *flatten(struct TreeNode *root) {
+	return root;
+}
+
+void iter_flatten(TreeNode *root) {
+	flatten(root);
 }
