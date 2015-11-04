@@ -5,6 +5,7 @@
 TreeNode *flatten(TreeNode *root)
 {
     TreeNode *tmp;
+	TreeNode *head = tmp;
     while(root != NULL) {
         if(root->leftNode != NULL) {
             tmp = root->leftNode;
@@ -17,17 +18,16 @@ TreeNode *flatten(TreeNode *root)
         }
         root = root->rightNode;
     }
-    return tmp;
+    return head;
 }
 
 void iter_flatten(TreeNode *root)
 {
     TreeNode *list = flatten(root);
-
-    printf("Flatten Tree Iterative: ");
+    printf("Flatten Tree Iterative:");
     while(list->rightNode) {
-        printf(" %d -> ",list->data);
+        printf(" %d ->",list->data);
         list = list->rightNode;
     }
-    printf("NULL\n");
+    printf(" NULL\n");
 }
