@@ -5,7 +5,7 @@
 TreeNode *flatten(TreeNode *root)
 {
     TreeNode *tmp;
-	TreeNode *head = tmp;
+    TreeNode *head = tmp;
     while(root != NULL) {
         if(root->leftNode != NULL) {
             tmp = root->leftNode;
